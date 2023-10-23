@@ -1,8 +1,9 @@
 import './App.css'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import FormVoluntarios from "./FormVoluntarios/FormVoluntarios";
 import Home from "./Home/Home";
 import Nav from './Nav/Nav';
+import About from './About/About';
+import Footer from './Footer/Footer';
 
 function App() {
 
@@ -11,8 +12,9 @@ function App() {
       <Nav/>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/form-voluntarios" element={<FormVoluntarios/>} />
+          <Route path="/about" element={<About />} />
         </Routes>
+      <Footer/>
       </BrowserRouter>
   );
 }
