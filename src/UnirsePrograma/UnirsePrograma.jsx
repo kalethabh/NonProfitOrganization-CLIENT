@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 function UnirsePrograma() {
   const [programas, setProgramas] = useState([]);
   const [voluntarioID, setVoluntarioID] = useState("");
-  const [programaSeleccionado, setProgramaSeleccionado] = useState("");
+  const [programaIngresado, setProgramaIngresado] = useState("");
   const [responseMessage, setResponseMessage] = useState("");
 
   useEffect(() => {
@@ -25,8 +25,8 @@ function UnirsePrograma() {
     setVoluntarioID(event.target.value);
   };
 
-  const handleProgramaChange = (event) => {
-    setProgramaSeleccionado(event.target.value);
+  const handleProgramaIngresadoChange = (event) => {
+    setProgramaIngresado(event.target.value);
   };
 
   const handleUnirsePrograma = async (event) => {
@@ -39,7 +39,7 @@ function UnirsePrograma() {
           "Content-Type": "application/x-www-form-urlencoded",
         },
         body: new URLSearchParams({
-          nombre_programa: programaSeleccionado,
+          nombre_programa: programaIngresado,
           voluntario_id: voluntarioID,
         }).toString(),
       });
@@ -48,7 +48,7 @@ function UnirsePrograma() {
         const data = await response.json();
         setResponseMessage(data.mensaje);
         setVoluntarioID("");
-        setProgramaSeleccionado("");
+        setProgramaIngresado("");
       } else {
         setResponseMessage("Error al unirse al programa");
       }
@@ -77,26 +77,18 @@ function UnirsePrograma() {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="programaSeleccionado" className="block text-gray-600">
-            Programa
+          <label htmlFor="programaIngresado" className="block text-gray-600">
+            Nombre del Programa
           </label>
-          <select
-            id="programaSeleccionado"
-            name="programaSeleccionado"
+          <input
+            type="text"
+            id="programaIngresado"
+            name="programaIngresado"
             className="w-full border-2 border-gray-300 p-2 rounded-md"
             required
-            value={programaSeleccionado}
-            onChange={handleProgramaChange}
-          >
-            <option value="" disabled>
-              Seleccione un programa
-            </option>
-            {programas.map((programa) => (
-              <option key={programa.nombre} value={programa.nombre}>
-                {programa.nombre}
-              </option>
-            ))}
-          </select>
+            value={programaIngresado}
+            onChange={handleProgramaIngresadoChange}
+          />
         </div>
         <div className="flex justify-center">
           <button
