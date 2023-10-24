@@ -2,7 +2,7 @@ function About(){
     const developers = [
       { name: 'Kaleth Benjumea Hernandez', role: 'Desarrollador Frontend/Backend', git:"https://github.com/kalethabh", linkedin:"https://www.linkedin.com/in/kaleth-alexander-benjumea-hern%C3%A1ndez-full-stack-developer/" },
       { name: 'Harlem Hernandez Rodriguez', role: 'Desarrollador Backend', git:"https://github.com/harlem17", linkedin:"https://www.linkedin.com/in/harlem-hernandez-rodr%C3%ADguez-7904b6297/"  },
-      { name: 'Camila', role: 'Diseñadora UX/UI', git:"https://github.com/CamilaLozanoValle", linkedin:""  },
+      { name: 'Camila Andrea Lozano Valle', role: 'Diseñadora UX/UI', git:"https://github.com/CamilaLozanoValle", linkedin:""  },
     ];
     
     const linkStyle = {
