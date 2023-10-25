@@ -5,6 +5,10 @@ function UnirsePrograma() {
   const [voluntarioID, setVoluntarioID] = useState("");
   const [programaIngresado, setProgramaIngresado] = useState("");
   const [responseMessage, setResponseMessage] = useState("");
+  const [errors, setErrors] = useState({
+    voluntarioID: "",
+    programaIngresado: "",
+  });
 
   useEffect(() => {
     const fetchProgramas = async () => {
@@ -22,39 +26,73 @@ function UnirsePrograma() {
   }, []);
 
   const handleVoluntarioIDChange = (event) => {
-    setVoluntarioID(event.target.value);
+    const value = event.target.value;
+  
+    // Si el valor es un número o está vacío, actualiza el estado
+    if (/^\d*$/.test(value)) {
+      setVoluntarioID(value);
+      setErrors({ ...errors, voluntarioID: "" });
+    } else {
+      // Si el valor no es un número, muestra un mensaje de error
+      setErrors({ ...errors, voluntarioID: "ID de voluntario inválido." });
+    }
   };
-
+  
   const handleProgramaIngresadoChange = (event) => {
-    setProgramaIngresado(event.target.value);
+    const value = event.target.value;
+    
+    // Permitir solo letras, números y caracteres especiales sin espacios
+    const sanitizedValue = value.replace(/[^a-zA-Z0-9\s]/g, "");
+    
+    setProgramaIngresado(sanitizedValue);
+    setErrors({ ...errors, programaIngresado: "" });
+  };
+  
+   
+
+  const validateForm = () => {
+    let valid = true;
+
+    if (voluntarioID === "" || isNaN(voluntarioID)) {
+      setErrors({ ...errors, voluntarioID: "ID de voluntario inválido." });
+      valid = false;
+    }
+
+    if (programaIngresado.trim() === "") {
+      setErrors({ ...errors, programaIngresado: "Nombre del programa no puede estar vacío." });
+      valid = false;
+    }
+
+    return valid;
   };
 
   const handleUnirsePrograma = async (event) => {
     event.preventDefault();
 
-    try {
-      const response = await fetch("https://fastapi454.onrender.com/unirse-programa", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: new URLSearchParams({
-          nombre_programa: programaIngresado,
-          voluntario_id: voluntarioID,
-        }).toString(),
-      });
+    if (validateForm()) {
+      try {
+        const response = await fetch("https://fastapi454.onrender.com/unirse-programa", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({
+            nombre_programa: programaIngresado,
+            voluntario_id: voluntarioID,
+          }).toString(),
+        });
 
-      if (response.ok) {
-        const data = await response.json();
-        setResponseMessage(data.mensaje);
-        setVoluntarioID("");
-        setProgramaIngresado("");
-      } else {
-        setResponseMessage("Error al unirse al programa");
+        if (response.ok) {
+          const data = await response.json();
+          setResponseMessage(data.mensaje);
+          setVoluntarioID("");
+          setProgramaIngresado("");
+        } else {
+          setResponseMessage("Error al unirse al programa");
+        }
+      } catch (error) {
+        console.error("Error de red:", error)
       }
-    } catch (error) {
-      console.error("Error de red:", error);
-      setResponseMessage("Error de red al unirse al programa");
     }
   };
 
@@ -75,6 +113,7 @@ function UnirsePrograma() {
             value={voluntarioID}
             onChange={handleVoluntarioIDChange}
           />
+          {errors.voluntarioID && <p className="text-red-500">{errors.voluntarioID}</p>}
         </div>
         <div className="mb-4">
           <label htmlFor="programaIngresado" className="block text-gray-600">
@@ -89,6 +128,7 @@ function UnirsePrograma() {
             value={programaIngresado}
             onChange={handleProgramaIngresadoChange}
           />
+          {errors.programaIngresado && <p className="text-red-500">{errors.programaIngresado}</p>}
         </div>
         <div className="flex justify-center">
           <button

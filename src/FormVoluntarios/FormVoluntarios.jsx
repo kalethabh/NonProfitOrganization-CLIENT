@@ -9,13 +9,44 @@ function Voluntarios() {
     Intereses: "",
   });
   const [responseMessage, setResponseMessage] = useState("");
+  const [errors, setErrors] = useState({
+    ID: "",
+    Telefono: "",
+  });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+
+    if (name === "ID" || name === "Telefono") {
+      const sanitizedValue = value.replace(/[^0-9]/g, "");
+      setFormData({
+        ...formData,
+        [name]: sanitizedValue,
+      });
+
+      if (sanitizedValue !== value) {
+        setErrors({ ...errors, [name]: "Solo se permiten números enteros." });
+      } else {
+        setErrors({ ...errors, [name]: "" });
+      }
+    } else if (name === "Nombre" || name === "Apellido") {
+      const sanitizedValue = value.replace(/[^a-zA-Z\s]/g, "");
+      setFormData({
+        ...formData,
+        [name]: sanitizedValue,
+      });
+
+      if (sanitizedValue !== value) {
+        setErrors({ ...errors, [name]: "Solo se permiten letras y espacios." });
+      } else {
+        setErrors({ ...errors, [name]: "" });
+      }
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
 
   const handleSubmit = async (event) => {
@@ -24,7 +55,7 @@ function Voluntarios() {
       const response = await fetch("https://fastapi454.onrender.com/create-voluntario", {
         method: "POST",
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded", 
+          "Content-Type": "application/x-www-form-urlencoded",
         },
         body: new URLSearchParams(formData).toString(),
       });
@@ -57,8 +88,10 @@ function Voluntarios() {
             name="ID"
             className="w-full border-2 border-gray-300 p-2 rounded-md"
             required
-            onChange={handleInputChange}
+            value={formData.ID}
+            onInput={handleInputChange}
           />
+          {errors.ID && <p className="text-red-500">{errors.ID}</p>}
         </div>
         <div className="mb-4">
           <label htmlFor="Nombre" className="block text-gray-600">
@@ -70,8 +103,10 @@ function Voluntarios() {
             name="Nombre"
             className="w-full border-2 border-gray-300 p-2 rounded-md"
             required
-            onChange={handleInputChange}
+            value={formData.Nombre}
+            onInput={handleInputChange}
           />
+          {errors.Nombre && <p className="text-red-500">{errors.Nombre}</p>}
         </div>
         <div className="mb-4">
           <label htmlFor="Apellido" className="block text-gray-600">
@@ -83,8 +118,10 @@ function Voluntarios() {
             name="Apellido"
             className="w-full border-2 border-gray-300 p-2 rounded-md"
             required
-            onChange={handleInputChange}
+            value={formData.Apellido}
+            onInput={handleInputChange}
           />
+          {errors.Apellido && <p className="text-red-500">{errors.Apellido}</p>}
         </div>
         <div className="mb-4">
           <label htmlFor="Telefono" className="block text-gray-600">
@@ -96,8 +133,10 @@ function Voluntarios() {
             name="Telefono"
             className="w-full border-2 border-gray-300 p-2 rounded-md"
             required
-            onChange={handleInputChange}
+            value={formData.Telefono}
+            onInput={handleInputChange}
           />
+          {errors.Telefono && <p className="text-red-500">{errors.Telefono}</p>}
         </div>
         <div className="mb-4">
           <label htmlFor="Intereses" className="block text-gray-600">
@@ -109,7 +148,8 @@ function Voluntarios() {
             name="Intereses"
             className="w-full border-2 border-gray-300 p-2 rounded-md h-20"
             required
-            onChange={handleInputChange}
+            value={formData.Intereses}
+            onInput={handleInputChange}
           />
         </div>
         <div className="flex justify-center">

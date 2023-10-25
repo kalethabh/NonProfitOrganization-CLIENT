@@ -34,8 +34,7 @@ function FormPrograma() {
         setResponseMessage("Error al registrar el programa");
       }
     } catch (error) {
-      console.error("Error de red:", error);
-      setResponseMessage("Error de red al registrar el programa");
+      console.error("Error de red:", error)
     }
   };
 
