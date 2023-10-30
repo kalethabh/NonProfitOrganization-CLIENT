@@ -17,7 +17,7 @@ function FormPrograma() {
     event.preventDefault();
 
     try {
-      const response = await fetch("https://fastapi454.onrender.com/create-programa", {
+      const response = await fetch("https://fastapinb.onrender.com/create-programa", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

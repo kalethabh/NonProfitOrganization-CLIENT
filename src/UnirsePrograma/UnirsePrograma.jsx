@@ -13,7 +13,7 @@ function UnirsePrograma() {
   useEffect(() => {
     const fetchProgramas = async () => {
       try {
-        const response = await fetch("https://fastapi454.onrender.com/programas");
+        const response = await fetch("https://reimagined-guide-7v9qx4wjq9gcr6g5-8000.app.github.dev/programas");
         const data = await response.json();
         setProgramas(data.programas);
         console.log(data);
@@ -71,7 +71,7 @@ function UnirsePrograma() {
 
     if (validateForm()) {
       try {
-        const response = await fetch("https://fastapi454.onrender.com/unirse-programa", {
+        const response = await fetch("https://fastapinb.onrender.com/unirse-programa", {
           method: "POST",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",

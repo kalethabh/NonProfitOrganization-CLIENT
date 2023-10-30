@@ -52,7 +52,7 @@ function Voluntarios() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch("https://fastapi454.onrender.com/create-voluntario", {
+      const response = await fetch("https://fastapinb.onrender.com/create-voluntario", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

@@ -5,7 +5,7 @@ function VolunteerList() {
   const [volunteers, setVolunteers] = useState([]);
 
   useEffect(() => {
-    axios.get('https://fastapi454.onrender.com/voluntarios')
+    axios.get('https://fastapinb.onrender.com/voluntarios')
       .then(response => {
         setVolunteers(response.data.voluntarios);
       })

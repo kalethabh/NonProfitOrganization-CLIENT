@@ -7,7 +7,7 @@ function MostrarVoluntarios() {
   useEffect(() => {
     const fetchVoluntarios = async () => {
       try {
-        const response = await axios.get("https://fastapi454.onrender.com/voluntarios");
+        const response = await axios.get("https://fastapinb.onrender.com/voluntarios");
         const data = response.data;
         setVoluntarios(data.voluntarios);
         console.log(data);
