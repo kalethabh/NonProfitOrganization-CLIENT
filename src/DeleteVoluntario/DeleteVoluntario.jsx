@@ -6,14 +6,15 @@ function DeleteVoluntario() {
 
   const handleInputChange = (event) => {
     setVoluntarioId(event.target.value);
+    setResponseMessage(""); // Limpiar el mensaje cuando se cambia el ID
   };
 
   const handleEliminarVoluntario = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await fetch("https://fastapinb.onrender.com/eliminar-voluntario", {
-        method: "POST",
+      const response = await fetch("https://fastapitre.onrender.com/eliminar-voluntario", {
+        method: "DELETE",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
@@ -24,7 +25,8 @@ function DeleteVoluntario() {
         const data = await response.json();
         setResponseMessage(data.mensaje);
       } else {
-        setResponseMessage("Error al eliminar el voluntario");
+        const data = await response.json();
+        setResponseMessage(data.mensaje); // Establecer el mensaje de error desde la respuesta
       }
     } catch (error) {
       console.error("Error de red:", error);
@@ -37,7 +39,7 @@ function DeleteVoluntario() {
         <h1 className="text-2xl mb-4">Eliminar Voluntario</h1>
         <div className="mb-4">
           <label htmlFor="voluntarioId" className="block text-gray-600">
-            ID del Voluntario a Eliminar
+            Cedula del Voluntario a Eliminar
           </label>
           <input
             type="text"

@@ -52,7 +52,7 @@ function Voluntarios() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch("https://fastapinb.onrender.com/create-voluntario", {
+      const response = await fetch("https://fastapitre.onrender.com/create-voluntario", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -80,7 +80,7 @@ function Voluntarios() {
         <h1 className="text-2xl mb-4">Registre el Voluntario</h1>
         <div className="mb-4">
           <label htmlFor="ID" className="block text-gray-600">
-            ID
+            Cedula
           </label>
           <input
             type="text"

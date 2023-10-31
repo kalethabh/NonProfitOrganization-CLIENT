@@ -16,7 +16,7 @@ function Nav() {
   };
 
   return (
-    <nav className="flex mt-14 bg-[#0c9266cc] h-[5em]">
+    <nav className="flex mt-6 bg-[#0c9266cc] h-[5em]">
       <ul className="flex flex-grow text-center mt-4">
         <li className="w-full text-2xl text-white font-bold"><Link to="/">Home</Link></li>
         <li className="w-full text-2xl text-white font-bold relative">
@@ -36,7 +36,7 @@ function Nav() {
             <ul className="absolute left-0 mt-2 space-y-2 bg-white border border-gray-300 text-black p-2 rounded-lg">
               <li><Link to="/form-programas" onClick={() => setShowProgramMenu(false)}>Registrar programa</Link></li>
               <li><Link to="/unirse-programa" onClick={() => setShowProgramMenu(false)}>Unirse a programa</Link></li>
-              <li><Link to="/ver-programas" onClick={() => setShowProgramMenu(false)}>Ver programas</Link></li>
+              <li><Link to="/programas" onClick={() => setShowProgramMenu(false)}>Ver programas</Link></li>
 
             </ul>
           )}

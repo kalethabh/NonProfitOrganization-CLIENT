@@ -9,6 +9,7 @@ import DeleteVoluntario from './DeleteVoluntario/DeleteVoluntario';
 import AllVoluntarios from './AllVoluntarios/AllVoluntarios'
 import FormPrograma from './FormPrograma/FormPrograma';
 import UnirsePrograma from './UnirsePrograma/UnirsePrograma';
+import AllProgramas from './AllProgramas/AllProgramas'
 
 function App() {
 
@@ -24,8 +25,7 @@ function App() {
         <Route path="/voluntarios" element={<AllVoluntarios/>}/>
         <Route path="/form-programas" element={<FormPrograma/>}/>
         <Route path="/unirse-programa" element={<UnirsePrograma/>}/>
-
-
+        <Route path="/programas" element={<AllProgramas/>} />
       </Routes>
       <Footer />
     </BrowserRouter>

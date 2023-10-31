@@ -7,10 +7,9 @@ function MostrarVoluntarios() {
   useEffect(() => {
     const fetchVoluntarios = async () => {
       try {
-        const response = await axios.get("https://fastapinb.onrender.com/voluntarios");
+        const response = await axios.get("https://fastapitre.onrender.com/voluntarios");
         const data = response.data;
         setVoluntarios(data.voluntarios);
-        console.log(data);
       } catch (error) {
         console.error("Error de red:", error);
       }
@@ -21,19 +20,31 @@ function MostrarVoluntarios() {
 
   return (
     <div className="mt-10">
-      <h1 className="text-2xl mb-4">Lista de Voluntarios</h1>
-      <ul>
-        {voluntarios.map((voluntario) => (
-          <li key={voluntario.ID}>
-            <strong>ID:</strong> {voluntario.ID}<br />
-            <strong>Nombre:</strong> {voluntario.Nombre}<br />
-            <strong>Apellido:</strong> {voluntario.Apellido}<br />
-            <strong>Teléfono:</strong> {voluntario.Telefono}<br />
-            <strong>Intereses:</strong> {voluntario.Intereses}<br />
-            <hr />
-          </li>
-        ))}
-      </ul>
+      <h1 className="text-3xl font-semibold mb-4 ml-6">Lista de Voluntarios</h1>
+      {voluntarios.length === 0 ? (
+        <p className="ml-6">No hay voluntarios disponibles en este momento.</p>
+      ) : (
+        <div className="ml-6">
+          {voluntarios.map((voluntario) => (
+            <div key={voluntario.ID} className="bg-gray-300 mt-4 rounded-lg shadow-xl h-[200px] w-[250px]">
+              <div className="p-4">
+                <p className="text-xl font-semibold">
+                  {voluntario.Nombre} {voluntario.Apellido}
+                </p>
+                <p>
+                  <strong>Cedula:</strong> {voluntario.ID}
+                </p>
+                <p>
+                  <strong>Teléfono:</strong> {voluntario.Telefono}
+                </p>
+                <p>
+                  <strong>Intereses:</strong> {voluntario.Intereses}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
