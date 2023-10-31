@@ -75,7 +75,7 @@ function Voluntarios() {
     <div className="flex justify-center mt-10">
       <form
         onSubmit={handleSubmit}
-        className="w-96 bg-white p-4 rounded-lg shadow-2xl"
+        className="md:w-96 lg:w-96 w-[20em] bg-white p-4 rounded-lg shadow-2xl"
       >
         <h1 className="text-2xl mb-4">Registre el Voluntario</h1>
         <div className="mb-4">

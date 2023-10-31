@@ -35,7 +35,7 @@ function DeleteVoluntario() {
 
   return (
     <div className="flex justify-center mt-10">
-      <form onSubmit={handleEliminarVoluntario} className="w-96 bg-white p-4 rounded-lg shadow-2xl">
+      <form onSubmit={handleEliminarVoluntario} className="md:w-96 lg:w-96 w-[22em] bg-white p-4 rounded-lg shadow-2xl">
         <h1 className="text-2xl mb-4">Eliminar Voluntario</h1>
         <div className="mb-4">
           <label htmlFor="voluntarioId" className="block text-gray-600">

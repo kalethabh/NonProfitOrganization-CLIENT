@@ -40,7 +40,7 @@ function FormPrograma() {
 
   return (
     <div className="flex justify-center mt-10">
-      <form onSubmit={handleRegistrarPrograma} className="w-96 bg-white p-4 rounded-lg shadow-md">
+      <form onSubmit={handleRegistrarPrograma} className="md:w-96 lg:w-96 w-[20em] bg-white p-4 rounded-lg shadow-xl">
         <h1 className="text-2xl mb-4">Registrar Programa</h1>
         <div className="mb-4">
           <label htmlFor="nombre" className="block text-gray-600">

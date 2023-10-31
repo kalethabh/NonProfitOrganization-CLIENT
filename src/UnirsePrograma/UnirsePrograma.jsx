@@ -98,7 +98,7 @@ function UnirsePrograma() {
 
   return (
     <div className="flex justify-center mt-10">
-      <form onSubmit={handleUnirsePrograma} className="w-96 bg-white p-4 rounded-lg shadow-md">
+      <form onSubmit={handleUnirsePrograma} className="md:w-96 lg:w-96 w-[20em] bg-white p-4 rounded-lg shadow-xl">
         <h1 className="text-2xl mb-4">Unirse a un Programa</h1>
         <div className="mb-4">
           <label htmlFor="voluntarioID" className="block text-gray-600">
