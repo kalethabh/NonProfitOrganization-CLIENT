@@ -72,58 +72,58 @@ function Voluntarios() {
   };
 
   return (
-    <div className="flex justify-center mt-10 lg:mt-6 lg:h-[29rem]">
+    <div className="flex justify-center mt-10 lg:mt-6 lg:h-[27rem]">
       <form
         onSubmit={handleSubmit}
         className="md:w-96 lg:w-96 w-[20em] bg-white p-4 rounded-lg shadow-2xl"
       >
         <h1 className="text-2xl mb-4">Registre el Voluntario</h1>
-        <div className="mb-4">
-          <label htmlFor="ID" className="block text-gray-600">
-            Cedula
+        <div className="flex mb-4">
+          <label htmlFor="ID" className="block text-gray-600 ml">
+            Cedula:
           </label>
           <input
             type="text"
             id="ID"
             name="ID"
-            className="w-full border-2 border-gray-300 p-2 lg:h-6 rounded-md"
+            className="w-40 ml-6 border-2 border-gray-300 p-2 lg:h-8 rounded-md"
             required
             value={formData.ID}
             onInput={handleInputChange}
           />
           {errors.ID && <p className="text-red-500">{errors.ID}</p>}
         </div>
-        <div className="mb-4">
+        <div className="flex mb-4">
           <label htmlFor="Nombre" className="block text-gray-600">
-            Nombre
+            Nombre:
           </label>
           <input
             type="text"
             id="Nombre"
             name="Nombre"
-            className="w-full border-2 border-gray-300 p-2 lg:h-6 rounded-md"
+            className="w-40 ml-4 border-2 border-gray-300 p-2 lg:h-8 rounded-md"
             required
             value={formData.Nombre}
             onInput={handleInputChange}
           />
           {errors.Nombre && <p className="text-red-500">{errors.Nombre}</p>}
         </div>
-        <div className="mb-4">
+        <div className=" flex mb-4">
           <label htmlFor="Apellido" className="block text-gray-600">
-            Apellido
+            Apellido:
           </label>
           <input
             type="text"
             id="Apellido"
             name="Apellido"
-            className="w-full border-2 border-gray-300 p-2 lg:h-6 rounded-md"
+            className="w-40 ml-4 border-2 border-gray-300 p-2 lg:h-8 rounded-md"
             required
             value={formData.Apellido}
             onInput={handleInputChange}
           />
           {errors.Apellido && <p className="text-red-500">{errors.Apellido}</p>}
         </div>
-        <div className="mb-4">
+        <div className="flex mb-4">
           <label htmlFor="Telefono" className="block text-gray-600">
             Teléfono
           </label>
@@ -131,7 +131,7 @@ function Voluntarios() {
             type="text"
             id="Telefono"
             name="Telefono"
-            className="w-full border-2 border-gray-300 p-2 lg:h-6 rounded-md"
+            className="w-40 ml-4 border-2 border-gray-300 p-2 lg:h-8 rounded-md"
             required
             value={formData.Telefono}
             onInput={handleInputChange}
@@ -146,7 +146,7 @@ function Voluntarios() {
             type="text"
             id="Intereses"
             name="Intereses"
-            className="w-full border-2 border-gray-300 p-2 lg:h-12 rounded-md h-20"
+            className="w-full border-2 border-gray-300 p-2 lg:h-20 rounded-md h-20"
             required
             value={formData.Intereses}
             onInput={handleInputChange}
