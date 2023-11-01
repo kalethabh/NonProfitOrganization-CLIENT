@@ -1,10 +1,6 @@
 {
-    "routes": [
-      {
-        "handle": "filesystem",
-        "src": "/(.*)",
-        "destination": "/$1"
-      }
+    "rewrites": [
+        {"source": "/(.*)", "destination": "/"}
     ]
   }
   
