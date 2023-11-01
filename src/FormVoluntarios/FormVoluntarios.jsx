@@ -72,7 +72,7 @@ function Voluntarios() {
   };
 
   return (
-    <div className="flex justify-center mt-10">
+    <div className="flex justify-center mt-10 lg:mt-6 lg:h-[29rem]">
       <form
         onSubmit={handleSubmit}
         className="md:w-96 lg:w-96 w-[20em] bg-white p-4 rounded-lg shadow-2xl"
@@ -86,7 +86,7 @@ function Voluntarios() {
             type="text"
             id="ID"
             name="ID"
-            className="w-full border-2 border-gray-300 p-2 rounded-md"
+            className="w-full border-2 border-gray-300 p-2 lg:h-6 rounded-md"
             required
             value={formData.ID}
             onInput={handleInputChange}
@@ -101,7 +101,7 @@ function Voluntarios() {
             type="text"
             id="Nombre"
             name="Nombre"
-            className="w-full border-2 border-gray-300 p-2 rounded-md"
+            className="w-full border-2 border-gray-300 p-2 lg:h-6 rounded-md"
             required
             value={formData.Nombre}
             onInput={handleInputChange}
@@ -116,7 +116,7 @@ function Voluntarios() {
             type="text"
             id="Apellido"
             name="Apellido"
-            className="w-full border-2 border-gray-300 p-2 rounded-md"
+            className="w-full border-2 border-gray-300 p-2 lg:h-6 rounded-md"
             required
             value={formData.Apellido}
             onInput={handleInputChange}
@@ -131,7 +131,7 @@ function Voluntarios() {
             type="text"
             id="Telefono"
             name="Telefono"
-            className="w-full border-2 border-gray-300 p-2 rounded-md"
+            className="w-full border-2 border-gray-300 p-2 lg:h-6 rounded-md"
             required
             value={formData.Telefono}
             onInput={handleInputChange}
@@ -146,7 +146,7 @@ function Voluntarios() {
             type="text"
             id="Intereses"
             name="Intereses"
-            className="w-full border-2 border-gray-300 p-2 rounded-md h-20"
+            className="w-full border-2 border-gray-300 p-2 lg:h-12 rounded-md h-20"
             required
             value={formData.Intereses}
             onInput={handleInputChange}
