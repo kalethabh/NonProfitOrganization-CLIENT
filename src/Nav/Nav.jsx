@@ -17,7 +17,7 @@ function Nav() {
 
   return (
     <nav className="bg-[#0c9266cc] p-4">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center md:px-16 lg:px-60">
         <Link to="/" className="md:text-2xl lg:text-2xl text-white font-bold">
           Home
         </Link>
@@ -31,20 +31,20 @@ function Nav() {
           <ul
             className={`${
               showVolunteerMenu ? "block" : "hidden"
-            } mt-2 space-y-2 bg-white text-black p-2 absolute rounded-lg border border-gray-300`}
+            } mt-2 space-y-1 space-x-6 w-44 md:w-44 lg:w-56 lg:h-28 bg-white text-black p-2 absolute rounded-lg border border-gray-300`}
           >
             <li>
-              <Link to="/form-voluntarios" onClick={() => setShowVolunteerMenu(false)}>
+              <Link className="" to="/form-voluntarios" onClick={() => setShowVolunteerMenu(false)}>
                 Registrar voluntario
               </Link>
             </li>
             <li>
-              <Link to="/delete-voluntario" onClick={() => setShowVolunteerMenu(false)}>
+              <Link  to="/delete-voluntario" onClick={() => setShowVolunteerMenu(false)}>
                 Eliminar voluntario
               </Link>
             </li>
             <li>
-              <Link to="/voluntarios" onClick={() => setShowVolunteerMenu(false)}>
+              <Link className="flex justify-normal" to="/voluntarios" onClick={() => setShowVolunteerMenu(false)}>
                 Ver voluntarios
               </Link>
             </li>
@@ -60,7 +60,7 @@ function Nav() {
           <ul
             className={`${
               showProgramMenu ? "block" : "hidden"
-            } mt-2 space-y-2 bg-white text-black p-2 absolute rounded-lg border border-gray-300`}
+            } mt-2 space-y-1 space-x-6 w-44 md:w-44 lg:w-56 lg:h-28 bg-white text-black p-2 absolute rounded-lg border border-gray-300`}
           >
             <li>
               <Link to="/form-programas" onClick={() => setShowProgramMenu(false)}>
