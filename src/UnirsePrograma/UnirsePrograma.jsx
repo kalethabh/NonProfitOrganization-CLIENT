@@ -14,9 +14,12 @@ function UnirsePrograma() {
     const fetchProgramas = async () => {
       try {
         const response = await fetch("https://fastapitre.onrender.com/programas");
-        const data = await response.json();
-        setProgramas(data.programas);
-        console.log(data);
+        if (response.ok) {
+          const data = await response.json();
+          if (data.programas) {
+            setProgramas(data.programas);
+          }
+        }
       } catch (error) {
         console.error("Error de red:", error);
       }
@@ -27,28 +30,20 @@ function UnirsePrograma() {
 
   const handleVoluntarioIDChange = (event) => {
     const value = event.target.value;
-  
-    // Si el valor es un número o está vacío, actualiza el estado
     if (/^\d*$/.test(value)) {
       setVoluntarioID(value);
       setErrors({ ...errors, voluntarioID: "" });
     } else {
-      // Si el valor no es un número, muestra un mensaje de error
       setErrors({ ...errors, voluntarioID: "Solo se permiten números enteros." });
     }
   };
-  
+
   const handleProgramaIngresadoChange = (event) => {
     const value = event.target.value;
-    
-    // Permitir solo letras, números y caracteres especiales sin espacios
     const sanitizedValue = value.replace(/[^a-zA-Z0-9\s]/g, "");
-    
     setProgramaIngresado(sanitizedValue);
     setErrors({ ...errors, programaIngresado: "" });
   };
-  
-   
 
   const validateForm = () => {
     let valid = true;
@@ -91,7 +86,7 @@ function UnirsePrograma() {
           setResponseMessage("Error al unirse al programa");
         }
       } catch (error) {
-        console.error("Error de red:", error)
+        console.error("Error de red:", error);
       }
     }
   };
@@ -140,6 +135,29 @@ function UnirsePrograma() {
         </div>
         {responseMessage && <p>{responseMessage}</p>}
       </form>
+      <div>
+        <h2>Programas:</h2>
+        <ul>
+          {programas.map((programa, index) => (
+            <li key={index}>
+              <strong>Nombre:</strong> {programa.nombre}
+              <p>
+                <strong>Descripción:</strong> {programa.descripcion}
+              </p>
+              <p>
+                <strong>Voluntarios:</strong>
+                <ul>
+                  {programa.voluntarios.map((voluntario, vIndex) => (
+                    <li key={vIndex}>
+                      {voluntario.nombre} {voluntario.apellido} - Teléfono: {voluntario.telefono}
+                    </li>
+                  ))}
+                </ul>
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
