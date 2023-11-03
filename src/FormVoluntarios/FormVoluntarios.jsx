@@ -84,7 +84,7 @@ function Voluntarios() {
     <div className="flex justify-center items-center mt-10 lg:mt-6 lg:h-[27rem]">
       <form
         onSubmit={handleSubmit}
-        className="md:w-96 lg:w-96 w-[20em] bg-white p-4 rounded-lg shadow-2xl"
+        className="md:w-96 lg:w-96 w-[22em] bg-white p-4 rounded-lg shadow-2xl"
       >
         <h1 className="text-2xl mb-4">Registre el Voluntario</h1>
         <div className="mb-4">
@@ -96,7 +96,7 @@ function Voluntarios() {
               type="text"
               id="ID"
               name="ID"
-              className="w-64 border-2 border-gray-300 p-2 lg:h-8 rounded-md"
+              className="w-64 ml-2 lg:ml-0 border-2 border-gray-300 p-2 lg:h-8 rounded-md"
               required
               value={formData.ID}
               onInput={handleInputChange}
@@ -113,7 +113,7 @@ function Voluntarios() {
             type="text"
             id="Nombre"
             name="Nombre"
-            className="w-64 border-2 border-gray-300 p-2 lg:h-8 rounded-md"
+            className="w-64 ml-2 lg:ml-0 border-2 border-gray-300 p-2 lg:h-8 rounded-md"
             required
             value={formData.Nombre}
             onInput={handleInputChange}
@@ -133,7 +133,7 @@ function Voluntarios() {
               type="text"
               id="Apellido"
               name="Apellido"
-              className="w-64 border-2 border-gray-300 p-2 lg:h-8 rounded-md"
+              className="w-64 ml-2 lg:ml-0 border-2 border-gray-300 p-2 lg:h-8 rounded-md"
               required
               value={formData.Apellido}
               onInput={handleInputChange}
@@ -150,7 +150,7 @@ function Voluntarios() {
               type="text"
               id="Telefono"
               name="Telefono"
-              className="w-64 border-2 border-gray-300 p-2 lg:h-8 rounded-md"
+              className="w-64 ml-2 lg:ml-0 border-2 border-gray-300 p-2 lg:h-8 rounded-md"
               required
               value={formData.Telefono}
               onInput={handleInputChange}
@@ -166,7 +166,7 @@ function Voluntarios() {
             type="text"
             id="Intereses"
             name="Intereses"
-            className="w-64 border-2 border-gray-300 p-2 lg:h-20 rounded-md"
+            className="w-64 ml-2 lg:ml-0 border-2 border-gray-300 p-2 lg:h-20 rounded-md"
             required
             value={formData.Intereses}
             onInput={handleInputChange}

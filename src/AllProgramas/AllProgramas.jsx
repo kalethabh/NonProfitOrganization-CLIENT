@@ -23,32 +23,34 @@ function VerProgramas() {
 
   return (
     <div className="mt-10">
-      <h1 className="flex text-3xl font-semibold mb-4 ml-6">Programas Disponibles</h1>
+      <h1 className="text-3xl font-semibold mb-4 ml-6">Programas Disponibles</h1>
       {programas.length === 0 ? (
         <p className="ml-6">No hay programas disponibles en este momento.</p>
       ) : (
-        <ul>
-          {programas.map((programa) => (
-            <li
-              key={programa.nombre}
-              className="bg-gray-300 w-60 rounded-lg mt-4 ml-6 p-4 shadow-xl"
-            >
-              <p className="text-xl font-semibold">{programa.nombre}</p>
-              <p>{programa.descripcion}</p>
-              <p>
-                <strong>Participantes:</strong>{" "}
-                {programa.voluntarios && programa.voluntarios.length > 0
-                  ? programa.voluntarios.map((voluntario, index) => (
-                      <span key={index}>
-                        {voluntario.nombre} {voluntario.apellido}
-                        {index !== programa.voluntarios.length - 1 ? ", " : ""}
-                      </span>
+        <div className="overflow-x-auto">
+          <div className="flex">
+            {programas.map((programa) => (
+              <div key={programa.nombre} className="bg-gray-300 rounded-lg m-4 p-4 shadow-xl" style={{ width: "300px" }}>
+                <h2 className="text-xl font-semibold">{programa.nombre}</h2>
+                <p>{programa.descripcion}</p>
+                <strong>Voluntarios:</strong>
+                <ul>
+                  {programa.voluntarios && programa.voluntarios.length > 0 ? (
+                    programa.voluntarios.map((voluntario, index) => (
+                      <li key={index}>
+                        <p>
+                          {voluntario.nombre} {voluntario.apellido}
+                        </p>
+                      </li>
                     ))
-                  : "Ningún voluntario"}
-              </p>
-            </li>
-          ))}
-        </ul>
+                  ) : (
+                    <li>Ningún voluntario</li>
+                  )}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );

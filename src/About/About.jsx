@@ -29,7 +29,7 @@ function About() {
 
   return (
     <div className="flex justify-center mt-4 lg:mt-1">
-      <div className="bg-white p-6 rounded-lg shadow-2xl overflow-auto md:h-[100rem] lg:h-[32rem] md:w-[45em] lg:w-[75em] w-[22em] max-h-[35rem] md:max-h-[41rem] lg:max-h-[35rem]">
+      <div className="bg-white p-6 rounded-lg shadow-2xl overflow-auto md:h-[100rem] lg:h-[32rem] md:w-[45em] lg:w-[75em] w-[22em] max-h-[38rem] md:max-h-[41rem] lg:max-h-[35rem]">
         <h1 className="text-xl md:text-3xl lg:text-3xl font-bold mb-4">
           Acerca de nuestra organización sin fines de lucro
         </h1>
