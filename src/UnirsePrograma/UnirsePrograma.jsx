@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 function UnirsePrograma() {
-  const [programas, setProgramas] = useState([]);
   const [voluntarioID, setVoluntarioID] = useState("");
   const [programaIngresado, setProgramaIngresado] = useState("");
   const [responseMessage, setResponseMessage] = useState("");
@@ -9,24 +8,6 @@ function UnirsePrograma() {
     voluntarioID: "",
     programaIngresado: "",
   });
-
-  useEffect(() => {
-    const fetchProgramas = async () => {
-      try {
-        const response = await fetch("https://fastapitre.onrender.com/programas");
-        if (response.ok) {
-          const data = await response.json();
-          if (data.programas) {
-            setProgramas(data.programas);
-          }
-        }
-      } catch (error) {
-        console.error("Error de red:", error);
-      }
-    };
-
-    fetchProgramas();
-  }, []);
 
   const handleVoluntarioIDChange = (event) => {
     const value = event.target.value;
@@ -135,29 +116,6 @@ function UnirsePrograma() {
         </div>
         {responseMessage && <p>{responseMessage}</p>}
       </form>
-      <div>
-        <h2>Programas:</h2>
-        <ul>
-          {programas.map((programa, index) => (
-            <li key={index}>
-              <strong>Nombre:</strong> {programa.nombre}
-              <p>
-                <strong>Descripción:</strong> {programa.descripcion}
-              </p>
-              <p>
-                <strong>Voluntarios:</strong>
-                <ul>
-                  {programa.voluntarios.map((voluntario, vIndex) => (
-                    <li key={vIndex}>
-                      {voluntario.nombre} {voluntario.apellido} - Teléfono: {voluntario.telefono}
-                    </li>
-                  ))}
-                </ul>
-              </p>
-            </li>
-          ))}
-        </ul>
-      </div>
     </div>
   );
 }
