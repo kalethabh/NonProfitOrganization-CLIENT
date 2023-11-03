@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 
 function VerProgramas() {
   const [programas, setProgramas] = useState([]);
@@ -7,9 +6,13 @@ function VerProgramas() {
   useEffect(() => {
     const fetchProgramas = async () => {
       try {
-        const response = await axios.get("https://fastapitre.onrender.com/programas");
-        const data = response.data;
-        setProgramas(data.programas);
+        const response = await fetch("https://fastapitre.onrender.com/programas");
+        if (response.ok) {
+          const data = await response.json();
+          if (data.programas) {
+            setProgramas(data.programas);
+          }
+        }
       } catch (error) {
         console.error("Error de red:", error);
       }
@@ -20,7 +23,7 @@ function VerProgramas() {
 
   return (
     <div className="mt-10">
-      <h1 className="text-3xl font-semibold mb-4 ml-6">Programas Disponibles</h1>
+      <h1 className="flex text-3xl font-semibold mb-4 ml-6">Programas Disponibles</h1>
       {programas.length === 0 ? (
         <p className="ml-6">No hay programas disponibles en este momento.</p>
       ) : (
@@ -28,20 +31,20 @@ function VerProgramas() {
           {programas.map((programa) => (
             <li
               key={programa.nombre}
-              className="bg-gray-300 rounded-lg mt-4 ml-6 p-4 shadow-xl h-[200px] w-[250px]"
+              className="bg-gray-300 w-60 rounded-lg mt-4 ml-6 p-4 shadow-xl"
             >
               <p className="text-xl font-semibold">{programa.nombre}</p>
               <p>{programa.descripcion}</p>
               <p>
                 <strong>Participantes:</strong>{" "}
-                {programa.participantes && programa.participantes.length > 0
-                  ? programa.participantes.map((participante, index) => (
+                {programa.voluntarios && programa.voluntarios.length > 0
+                  ? programa.voluntarios.map((voluntario, index) => (
                       <span key={index}>
-                        {participante.Nombre} {participante.Apellido}
-                        {index !== programa.participantes.length - 1 ? ", " : ""}
+                        {voluntario.nombre} {voluntario.apellido}
+                        {index !== programa.voluntarios.length - 1 ? ", " : ""}
                       </span>
                     ))
-                  : "Ningún participante"}
+                  : "Ningún voluntario"}
               </p>
             </li>
           ))}

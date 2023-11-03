@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function UnirsePrograma() {
   const [voluntarioID, setVoluntarioID] = useState("");
@@ -11,6 +11,7 @@ function UnirsePrograma() {
 
   const handleVoluntarioIDChange = (event) => {
     const value = event.target.value;
+
     if (/^\d*$/.test(value)) {
       setVoluntarioID(value);
       setErrors({ ...errors, voluntarioID: "" });
@@ -21,7 +22,9 @@ function UnirsePrograma() {
 
   const handleProgramaIngresadoChange = (event) => {
     const value = event.target.value;
+
     const sanitizedValue = value.replace(/[^a-zA-Z0-9\s]/g, "");
+
     setProgramaIngresado(sanitizedValue);
     setErrors({ ...errors, programaIngresado: "" });
   };
