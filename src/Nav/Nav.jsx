@@ -31,9 +31,9 @@ function Nav() {
           <ul
             className={`${
               showVolunteerMenu ? "block" : "hidden"
-            } mt-2 space-y-1 space-x-6 w-44 md:w-44 lg:w-56 lg:h-28 bg-white text-black p-2 absolute rounded-lg border border-gray-300`}
+            } mt-2 space-y-1 space-x-4 w-44 md:w-44 lg:w-54 lg:h-30 bg-white text-black p-1 absolute rounded-lg border border-gray-300`}
           >
-            <li>
+            <li className="ml-4">
               <Link className="" to="/form-voluntarios" onClick={() => setShowVolunteerMenu(false)}>
                 Registrar voluntario
               </Link>
@@ -60,9 +60,9 @@ function Nav() {
           <ul
             className={`${
               showProgramMenu ? "block" : "hidden"
-            } mt-2 space-y-1 space-x-6 w-44 md:w-44 lg:w-56 lg:h-28 bg-white text-black p-2 absolute rounded-lg border border-gray-300`}
+            } mt-2 space-y-1 space-x-4 w-44 md:w-44 lg:w-48 lg:h-32 bg-white text-black p-1 absolute rounded-lg border border-gray-300`}
           >
-            <li>
+            <li className="ml-4">
               <Link to="/form-programas" onClick={() => setShowProgramMenu(false)}>
                 Registrar programa
               </Link>
@@ -75,6 +75,11 @@ function Nav() {
             <li>
               <Link to="/programas" onClick={() => setShowProgramMenu(false)}>
                 Ver programas
+              </Link>
+            </li>
+            <li>
+              <Link to="/delete-programa" onClick={() => setShowProgramMenu(false)}>
+                Eliminar programas
               </Link>
             </li>
           </ul>

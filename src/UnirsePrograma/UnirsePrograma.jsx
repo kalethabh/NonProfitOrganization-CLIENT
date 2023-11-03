@@ -34,7 +34,7 @@ function UnirsePrograma() {
       setErrors({ ...errors, voluntarioID: "" });
     } else {
       // Si el valor no es un número, muestra un mensaje de error
-      setErrors({ ...errors, voluntarioID: "ID de voluntario inválido." });
+      setErrors({ ...errors, voluntarioID: "Solo se permiten números enteros." });
     }
   };
   
@@ -54,7 +54,7 @@ function UnirsePrograma() {
     let valid = true;
 
     if (voluntarioID === "" || isNaN(voluntarioID)) {
-      setErrors({ ...errors, voluntarioID: "ID de voluntario inválido." });
+      setErrors({ ...errors, voluntarioID: "Solo se permiten números enteros." });
       valid = false;
     }
 

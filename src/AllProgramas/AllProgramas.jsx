@@ -35,7 +35,7 @@ function VerProgramas() {
               <p>{programa.descripcion}</p>
               <p>
                 <strong>Participantes:</strong>{" "}
-                {programa.participantes.length > 0
+                {programa.participantes && programa.participantes.length > 0
                   ? programa.participantes.map((participante, index) => (
                       <span key={index}>
                         {participante.Nombre} {participante.Apellido}
@@ -44,6 +44,7 @@ function VerProgramas() {
                     ))
                   : "Ningún participante"}
               </p>
+
             </li>
           ))}
         </ul>
