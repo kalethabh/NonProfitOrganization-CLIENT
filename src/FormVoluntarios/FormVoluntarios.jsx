@@ -52,7 +52,7 @@ function Voluntarios() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch("https://fastapitre.onrender.com/create-voluntario", {
+      const response = await fetch("https://ds-nonprofitorganization1.onrender.com/create-voluntario", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

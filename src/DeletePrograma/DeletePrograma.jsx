@@ -13,7 +13,7 @@ function DeletePrograma() {
     event.preventDefault();
 
     try {
-      const response = await fetch("https://fastapitre.onrender.com/eliminar-programa", {
+      const response = await fetch("https://ds-nonprofitorganization1.onrender.com/eliminar-programa", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

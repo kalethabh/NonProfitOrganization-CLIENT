@@ -13,7 +13,7 @@ function DeleteVoluntario() {
     event.preventDefault();
 
     try {
-      const response = await fetch("https://fastapitre.onrender.com/eliminar-voluntario", {
+      const response = await fetch("https://ds-nonprofitorganization1.onrender.com/eliminar-voluntario", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

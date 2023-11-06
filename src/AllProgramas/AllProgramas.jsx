@@ -6,7 +6,7 @@ function VerProgramas() {
   useEffect(() => {
     const fetchProgramas = async () => {
       try {
-        const response = await fetch("https://fastapitre.onrender.com/programas");
+        const response = await fetch("https://ds-nonprofitorganization1.onrender.com/programas");
         if (response.ok) {
           const data = await response.json();
           if (data.programas) {
