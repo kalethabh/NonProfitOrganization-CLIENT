@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 
-function MostrarProgramas() {
+function VerProgramas() {
   const [programas, setProgramas] = useState([]);
 
   useEffect(() => {
     const fetchProgramas = async () => {
       try {
-        const response = await axios.get("https://ds-nonprofitorganization1.onrender.com/programas");
-        const data = response.data;
-        setProgramas(data.programas);
+        const response = await fetch("https://ds-nonprofitorganization1.onrender.com/programas");
+        if (response.ok) {
+          const data = await response.json();
+          if (data.programas) {
+            setProgramas(data.programas);
+          }
+        }
       } catch (error) {
         console.error("Error de red:", error);
       }
@@ -24,11 +27,11 @@ function MostrarProgramas() {
       {programas.length === 0 ? (
         <p className="ml-6">No hay programas disponibles en este momento.</p>
       ) : (
-        <div className="ml-6">
-          {programas.map((programa) => (
-            <div key={programa.nombre} className="bg-gray-300 mt-4 rounded-lg shadow-xl h-[200px] w-[250px]">
-              <div className="p-4">
-                <p className="text-xl font-semibold">{programa.nombre}</p>
+        <div className="overflow-x-auto">
+          <div className="flex">
+            {programas.map((programa) => (
+              <div key={programa.nombre} className="bg-gray-300 rounded-lg m-4 p-4 shadow-xl" style={{ width: "300px" }}>
+                <h2 className="text-xl font-semibold">{programa.nombre}</h2>
                 <p>{programa.descripcion}</p>
                 <strong>Voluntarios:</strong>
                 <ul>
@@ -45,12 +48,12 @@ function MostrarProgramas() {
                   )}
                 </ul>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       )}
     </div>
   );
 }
 
-export default MostrarProgramas;
+export default VerProgramas;
