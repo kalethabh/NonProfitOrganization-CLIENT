@@ -11,6 +11,8 @@ import FormPrograma from './FormPrograma/FormPrograma';
 import UnirsePrograma from './UnirsePrograma/UnirsePrograma';
 import AllProgramas from './AllProgramas/AllProgramas'
 import DeletePrograma from './DeletePrograma/DeletePrograma'
+import FormDonaciones from './FormDonaciones/FormDonaciones'
+import AllDonaciones from './AllDonaciones/AllDonaciones'
 
 function App() {
 
@@ -22,12 +24,14 @@ function App() {
         <Route path="*" element={<Home/>}/>
         <Route path="/about" element={<About/>} />
         <Route path="/form-voluntarios" element={<FormVoluntarios/>}/>
-        <Route path='/delete-voluntario' element={<DeleteVoluntario/>}/>
-        <Route path='/delete-programa' element={<DeletePrograma/>}/>
         <Route path="/form-programas" element={<FormPrograma/>}/>
-        <Route path="/unirse-programa" element={<UnirsePrograma/>}/>
+        <Route path="/form-donacion" element={<FormDonaciones/>}/>
         <Route path="/voluntarios" element={<AllVoluntarios/>}/>
         <Route path="/programas" element={<AllProgramas/>} />
+        <Route path="/donaciones" element={<AllDonaciones/>} />
+        <Route path="/unirse-programa" element={<UnirsePrograma/>}/>
+        <Route path='/delete-voluntario' element={<DeleteVoluntario/>}/>
+        <Route path='/delete-programa' element={<DeletePrograma/>}/>
       </Routes>
       <Footer />
     </BrowserRouter>

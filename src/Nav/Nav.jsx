@@ -4,15 +4,24 @@ import { useState } from "react";
 function Nav() {
   const [showVolunteerMenu, setShowVolunteerMenu] = useState(false);
   const [showProgramMenu, setShowProgramMenu] = useState(false);
+  const [showMoreMenu, setShowMoreMenu] = useState(false);
 
   const toggleVolunteerMenu = () => {
     setShowVolunteerMenu(!showVolunteerMenu);
     setShowProgramMenu(false); // Cerrar el otro menú al abrir este
+    setShowMoreMenu(false); // Cerrar el menú "Más" al abrir este
   };
 
   const toggleProgramMenu = () => {
     setShowProgramMenu(!showProgramMenu);
     setShowVolunteerMenu(false); // Cerrar el otro menú al abrir este
+    setShowMoreMenu(false); // Cerrar el menú "Más" al abrir este
+  };
+
+  const toggleMoreMenu = () => {
+    setShowMoreMenu(!showMoreMenu);
+    setShowVolunteerMenu(false); // Cerrar el menú de voluntarios al abrir este
+    setShowProgramMenu(false); // Cerrar el menú de programas al abrir este
   };
 
   return (
@@ -33,13 +42,14 @@ function Nav() {
               showVolunteerMenu ? "block" : "hidden"
             } mt-2 space-y-1 space-x-4 w-44 md:w-44 lg:w-54 lg:h-30 bg-white text-black p-1 absolute rounded-lg border border-gray-300`}
           >
+            {/* Opciones del menú de voluntarios */}
             <li className="ml-4">
               <Link className="" to="/form-voluntarios" onClick={() => setShowVolunteerMenu(false)}>
                 Registrar voluntario
               </Link>
             </li>
             <li>
-              <Link  to="/delete-voluntario" onClick={() => setShowVolunteerMenu(false)}>
+              <Link to="/delete-voluntario" onClick={() => setShowVolunteerMenu(false)}>
                 Eliminar voluntario
               </Link>
             </li>
@@ -80,6 +90,40 @@ function Nav() {
             <li>
               <Link to="/delete-programa" onClick={() => setShowProgramMenu(false)}>
                 Eliminar programas
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="group relative">
+          <button
+            className="md:text-2xl lg:text-2xl text-white font-bold"
+            onClick={toggleMoreMenu}
+          >
+            Donaciones ▼
+          </button>
+          <ul
+            className={`${
+              showMoreMenu ? "block" : "hidden"
+            } mt-2 space-y-1 space-x-4 w-44 md:w-44 lg:w-48 lg:h-32 bg-white text-black p-1 absolute rounded-lg border border-gray-300`}
+          >
+            <li className="ml-4">
+              <Link to="/form-donacion" onClick={() => setShowMoreMenu(false)}>
+                Registrar donacion
+              </Link>
+            </li>
+            <li className="ml-4">
+              <Link to="/donaciones" onClick={() => setShowMoreMenu(false)}>
+                Ver donaciones
+              </Link>
+            </li>
+            <li className="ml-4">
+              <Link to="/otra-opcion" onClick={() => setShowMoreMenu(false)}>
+                Buscar donacion
+              </Link>
+            </li>
+            <li className="ml-4">
+              <Link to="/otra-opcion" onClick={() => setShowMoreMenu(false)}>
+                Eliminar donacion
               </Link>
             </li>
           </ul>
