@@ -117,12 +117,12 @@ function Nav() {
               </Link>
             </li>
             <li className="ml-4">
-              <Link to="/otra-opcion" onClick={() => setShowMoreMenu(false)}>
+              <Link to="/buscar-donacion" onClick={() => setShowMoreMenu(false)}>
                 Buscar donacion
               </Link>
             </li>
             <li className="ml-4">
-              <Link to="/otra-opcion" onClick={() => setShowMoreMenu(false)}>
+              <Link to="/delete-donacion" onClick={() => setShowMoreMenu(false)}>
                 Eliminar donacion
               </Link>
             </li>
