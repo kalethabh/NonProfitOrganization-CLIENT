@@ -16,14 +16,14 @@ function Voluntarios() {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-  
+
     if (name === "ID" || name === "Telefono") {
       const sanitizedValue = value.replace(/[^0-9]/g, "");
       setFormData({
         ...formData,
         [name]: sanitizedValue,
       });
-  
+
       if (sanitizedValue !== value) {
         setErrors({ ...errors, [name]: "Solo se permiten números enteros." });
       } else {
@@ -35,7 +35,7 @@ function Voluntarios() {
         ...formData,
         [name]: sanitizedValue,
       });
-  
+
       if (sanitizedValue !== value) {
         setErrors({ ...errors, [name]: "Solo se permiten letras y espacios." });
       } else {
@@ -47,7 +47,7 @@ function Voluntarios() {
         [name]: value,
       });
     }
-  };  
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -73,7 +73,12 @@ function Voluntarios() {
           Intereses: "",
         });
       } else {
-        setResponseMessage("Error al agregar el voluntario");
+        const data = await response.json();
+        if (data.error && data.error.includes("duplicate key value violates unique constraint")) {
+          setResponseMessage("El voluntario con este ID ya ha sido agregado.");
+        } else {
+          setResponseMessage("Error al agregar el voluntario");
+        }
       }
     } catch (error) {
       console.error("Error de red:", error);
@@ -102,26 +107,24 @@ function Voluntarios() {
               onInput={handleInputChange}
             />
           </div>
-            {errors.ID && <p className="text-red-500 ml-24 mb-2">{errors.ID}</p>}
+          {errors.ID && <p className="text-red-500 ml-24 mb-2">{errors.ID}</p>}
         </div>
         <div className="mb-4 ">
-        <div className="flex items-center">
-          <label htmlFor="Nombre" className="w-24 text-gray-600">
-            Nombre:
-          </label>
-          <input
-            type="text"
-            id="Nombre"
-            name="Nombre"
-            className="w-64 ml-2 lg:ml-0 border-2 border-gray-300 p-2 lg:h-8 rounded-md"
-            required
-            value={formData.Nombre}
-            onInput={handleInputChange}
-          />
-          <div>
-
+          <div className="flex items-center">
+            <label htmlFor="Nombre" className="w-24 text-gray-600">
+              Nombre:
+            </label>
+            <input
+              type="text"
+              id="Nombre"
+              name="Nombre"
+              className="w-64 ml-2 lg:ml-0 border-2 border-gray-300 p-2 lg:h-8 rounded-md"
+              required
+              value={formData.Nombre}
+              onInput={handleInputChange}
+            />
+            <div></div>
           </div>
-        </div>
           {errors.Nombre && <p className="text-red-500 ml-24 mb-2">{errors.Nombre}</p>}
         </div>
         <div className="mb-4">
@@ -139,7 +142,7 @@ function Voluntarios() {
               onInput={handleInputChange}
             />
           </div>
-            {errors.Apellido && <p className="text-red-500 ml-24 mb-2">{errors.Apellido}</p>}
+          {errors.Apellido && <p className="text-red-500 ml-24 mb-2">{errors.Apellido}</p>}
         </div>
         <div className="mb-4">
           <div className="flex items-center">
@@ -156,7 +159,7 @@ function Voluntarios() {
               onInput={handleInputChange}
             />
           </div>
-            {errors.Telefono && <p className="text-red-500 ml-24 mb-2">{errors.Telefono}</p>}
+          {errors.Telefono && <p className="text-red-500 ml-24 mb-2">{errors.Telefono}</p>}
         </div>
         <div className="mb-4 flex items-center">
           <label htmlFor="Intereses" className="w-24 text-gray-600">
