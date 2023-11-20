@@ -76,7 +76,11 @@ function VerProgramas() {
   return (
     <div className="mt-10 ml-6 overflow-x-auto">
       <h1 className="text-3xl font-semibold mb-4">Programas Disponibles</h1>
-      <TablaProgramas programas={programas} />
+      {programas.length > 0 ? (
+        <TablaProgramas programas={programas} />
+      ) : (
+        <p>No hay programas disponibles en este momento.</p>
+      )}
     </div>
   );
 }

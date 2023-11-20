@@ -26,10 +26,15 @@ function DeletePrograma() {
         setResponseMessage(data.mensaje);
       } else {
         const data = await response.json();
-        setResponseMessage(data.mensaje); // Establecer el mensaje de error desde la respuesta
+        if (response.status === 500 && data.error === "") {
+          setResponseMessage("El programa no existe. Verifique el nombre.");
+        } else {
+          setResponseMessage(data.error || "Hubo un error al procesar la solicitud."); // Mostrar mensaje de error general
+        }
       }
     } catch (error) {
       console.error("Error de red:", error);
+      setResponseMessage("Hubo un error de red. Inténtelo nuevamente más tarde.");
     }
   };
 

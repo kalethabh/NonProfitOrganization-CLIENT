@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 function TablaDonaciones({ donaciones, montoTotal }) {
   return (
-    <div className="mt-10 ml-6 overflow-x-auto">
-      <h2 className="text-3xl font-semibold mb-4">Lista de Donaciones</h2>
+    <div className="overflow-x-auto">
       <table className="min-w-full border border-gray-300 bg-white" style={{ maxWidth: '50em' }}>
         <thead>
           <tr>
@@ -81,7 +80,14 @@ function TodasDonaciones() {
   }, []);  
 
   return (
-    <TablaDonaciones donaciones={donaciones} montoTotal={montoTotal} />
+    <div className="mt-10 ml-6 overflow-x-auto">
+      <h2 className="text-3xl font-semibold mb-4">Lista de Donaciones</h2>
+      {donaciones.length > 0 ? (
+        <TablaDonaciones donaciones={donaciones} montoTotal={montoTotal} />
+      ) : (
+        <p>No hay donaciones disponibles en este momento.</p>
+      )}
+    </div>
   );
 }
 

@@ -5,28 +5,32 @@ function TablaVoluntarios({ voluntarios }) {
   return (
     <div className="mt-10 ml-6 overflow-x-auto">
       <h2 className="text-3xl font-semibold mb-4">Lista de Voluntarios</h2>
-      <table className="min-w-full border border-gray-300 bg-[#f6f6f6]" style={{ maxWidth: '80em' }}>
-        <thead>
-          <tr>
-            <th className="py-2 px-4 border-b">ID</th>
-            <th className="py-2 px-4 border-b">Nombre</th>
-            <th className="py-2 px-4 border-b">Apellido</th>
-            <th className="py-2 px-4 border-b">Teléfono</th>
-            <th className="py-2 px-4 border-b">Intereses</th>
-          </tr>
-        </thead>
-        <tbody>
-          {voluntarios.map((voluntario) => (
-            <tr key={voluntario.ID}>
-              <td className="py-2 px-4 border-b">{voluntario.ID}</td>
-              <td className="py-2 px-4 border-b">{voluntario.Nombre}</td>
-              <td className="py-2 px-4 border-b">{voluntario.Apellido}</td>
-              <td className="py-2 px-4 border-b">{voluntario.Telefono}</td>
-              <td className="py-2 px-4 border-b">{voluntario.Intereses}</td>
+      {voluntarios.length > 0 ? (
+        <table className="min-w-full border border-gray-300 bg-[#f6f6f6]" style={{ maxWidth: '80em' }}>
+          <thead>
+            <tr>
+              <th className="py-2 px-4 border-b">ID</th>
+              <th className="py-2 px-4 border-b">Nombre</th>
+              <th className="py-2 px-4 border-b">Apellido</th>
+              <th className="py-2 px-4 border-b">Teléfono</th>
+              <th className="py-2 px-4 border-b">Intereses</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {voluntarios.map((voluntario) => (
+              <tr key={voluntario.ID}>
+                <td className="py-2 px-4 border-b">{voluntario.ID}</td>
+                <td className="py-2 px-4 border-b">{voluntario.Nombre}</td>
+                <td className="py-2 px-4 border-b">{voluntario.Apellido}</td>
+                <td className="py-2 px-4 border-b">{voluntario.Telefono}</td>
+                <td className="py-2 px-4 border-b">{voluntario.Intereses}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No hay voluntarios disponibles en este momento.</p>
+      )}
     </div>
   );
 }

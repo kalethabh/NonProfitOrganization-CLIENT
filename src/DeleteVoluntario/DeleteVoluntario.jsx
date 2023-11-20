@@ -11,7 +11,7 @@ function DeleteVoluntario() {
 
   const handleEliminarVoluntario = async (event) => {
     event.preventDefault();
-
+  
     try {
       const response = await fetch("https://ds-nonprofitorganization1.onrender.com/eliminar-voluntario", {
         method: "DELETE",
@@ -20,16 +20,21 @@ function DeleteVoluntario() {
         },
         body: new URLSearchParams({ ID: voluntarioId }).toString(),
       });
-
+  
       if (response.ok) {
         const data = await response.json();
         setResponseMessage(data.mensaje);
       } else {
         const data = await response.json();
-        setResponseMessage(data.mensaje); // Establecer el mensaje de error desde la respuesta
+        if (response.status === 500 && data.error === "") {
+          setResponseMessage("El voluntario no existe. Verifique el ID.");
+        } else {
+          setResponseMessage(data.error || "Hubo un error al procesar la solicitud."); // Mostrar mensaje de error general
+        }
       }
     } catch (error) {
       console.error("Error de red:", error);
+      setResponseMessage("Hubo un error de red. Inténtelo nuevamente más tarde.");
     }
   };
 
@@ -58,7 +63,7 @@ function DeleteVoluntario() {
             Eliminar
           </button>
         </div>
-        {responseMessage && <p>{responseMessage}</p>}
+        {responseMessage && <p className={responseMessage.includes("Error") ? "text-red-600" : ""}>{responseMessage}</p>}
       </form>
     </div>
   );
