@@ -4,9 +4,11 @@ function FormPrograma() {
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [responseMessage, setResponseMessage] = useState("");
+  const [errorNombre, setErrorNombre] = useState("");
 
   const handleNombreChange = (event) => {
     setNombre(event.target.value);
+    setErrorNombre("");
   };
 
   const handleDescripcionChange = (event) => {
@@ -31,10 +33,15 @@ function FormPrograma() {
         setNombre("");
         setDescripcion("");
       } else {
-        setResponseMessage("Error al registrar el programa");
+        const data = await response.json();
+        if (data.error && data.error.includes("duplicate key value violates unique constraint")) {
+          setErrorNombre("Ya existe un programa con ese nombre.");
+        } else {
+          setResponseMessage("Error al registrar el programa");
+        }
       }
     } catch (error) {
-      console.error("Error de red:", error)
+      console.error("Error de red:", error);
     }
   };
 
@@ -55,6 +62,7 @@ function FormPrograma() {
             value={nombre}
             onChange={handleNombreChange}
           />
+          {errorNombre && <p className="text-red-500 ml-24 mb-2">{errorNombre}</p>}
         </div>
         <div className="mb-4">
           <label htmlFor="descripcion" className="block text-gray-600">
